@@ -8,13 +8,17 @@ function read() {
         code,
         name,
         age,
-        email
+        email,
+        cpf,
+        rg,
+        nickname,
+        cellphone,
+        gender
       }
     }`
   };
-
   const http = new XMLHttpRequest();
-  http.open('POST', 'http://localhost:3000/graphql', true);
+  http.open('POST', 'http://localhost:3001/graphql', true);
   http.setRequestHeader('Content-Type', 'application/json');
 
   http.onreadystatechange = function() {
@@ -79,6 +83,11 @@ function select(_code=0) {
   const name = document.getElementById('name');
   const age = document.getElementById('age');
   const email = document.getElementById('email');
+  const cpf = document.getElementById('cpf');
+  const rg = document.getElementById('rg');
+  const nickname = document.getElementById('nickname');
+  const cellphone = document.getElementById('cellphone');
+  const gender = document.getElementById('gender');
 
   const query = {
     query: `{
@@ -86,13 +95,18 @@ function select(_code=0) {
         code,
         name,
         age,
-        email
+        email,
+        cpf,
+        rg,
+        nickname,
+        cellphone,
+        gender
       }
     }`
   };
 
   const http = new XMLHttpRequest();
-  http.open('POST', 'http://localhost:3000/graphql', true);
+  http.open('POST', 'http://localhost:3001/graphql', true);
   http.setRequestHeader('Content-Type', 'application/json');
 
   http.onreadystatechange = function() {
@@ -104,6 +118,11 @@ function select(_code=0) {
       name.value = Person.name;
       age.value = Person.age;
       email.value = Person.email;
+      cpf.value = Person.cpf;
+      rg.value = Person.rg;
+      nickname.value = Person.nickname;
+      cellphone.value = Person.cellphone;
+      gender.value = Person.gender;
     }
   }
   http.send(JSON.stringify(query));
@@ -114,6 +133,11 @@ function clean() {
   document.getElementById('name').value = '';
   document.getElementById('age').value = '';
   document.getElementById('email').value = '';
+  document.getElementById('cpf').value = '';
+  document.getElementById('rg').value = '';
+  document.getElementById('nickname').value = '';
+  document.getElementById('cellphone').value = '';
+  document.getElementById('gender').value = '';
   document.getElementById('name').focus();	
 }
 
@@ -122,6 +146,11 @@ function save() {
   const name = document.getElementById('name').value.toString().trim();
   const age = Number(document.getElementById('age').value);
   const email = document.getElementById('email').value.toString().trim();
+  const cpf = Number(document.getElementById('cpf').value);
+  const rg = Number(document.getElementById('rg').value);
+  const nickname = document.getElementById('nickname').value.toString().trim();
+  const cellphone = Number(document.getElementById('cellphone').value);
+  const gender = document.getElementById('gender').value.toString().trim();
 
   let query = '';
   if(code>0) {
@@ -130,7 +159,12 @@ function save() {
         updatePerson(code: ${code}, input: {
           name: "${name}",
           age: ${age},
-          email: "${email}"
+          email: "${email}",
+          cpf: ${cpf},
+          rg: ${rg},
+          nickname: "${nickname}",
+          cellphone: ${cellphone},
+          gender: "${gender}"
         })
       }`
     };
@@ -140,19 +174,29 @@ function save() {
         insertPerson(input: {
           name: "${name}",
           age: ${age},
-          email: "${email}"
+          email: "${email}",
+          cpf: ${cpf},
+          rg: ${rg},
+          nickname: "${nickname}",
+          cellphone: ${cellphone},
+          gender: "${gender}"
         }) {
           code,
           name,
           age,
-          email
+          email,
+          cpf,
+          rg,
+          nickname,
+          cellphone,
+          gender
         }
       }`
     };
   }
 
   const http = new XMLHttpRequest();
-  http.open('POST', 'http://localhost:3000/graphql', true);
+  http.open('POST', 'http://localhost:3001/graphql', true);
   http.setRequestHeader('Content-Type', 'application/json');
 
   http.onreadystatechange = function() {
@@ -175,7 +219,7 @@ function deleteButton() {
     };
 
     const http = new XMLHttpRequest();
-    http.open('POST', 'http://localhost:3000/graphql', true);
+    http.open('POST', 'http://localhost:3001/graphql', true);
     http.setRequestHeader('Content-Type', 'application/json');
 
     http.onreadystatechange = function() {

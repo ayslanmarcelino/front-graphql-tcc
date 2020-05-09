@@ -27,8 +27,22 @@
       <div class="form">
         <input type="hidden" id="code" value="0">
         <input type="text" id="name" class="form-control col-md-5 mr-4" placeholder="Digite seu nome">
-        <input type="number" id="age" class="form-control col-md-2 mr-4" placeholder="Digite sua idade" min="18" max="65">
-        <input type="email" id="email" class="form-control col-md-4" placeholder="Digite seu e-mail"> 
+        <input type="text" id="nickname" class="form-control col-md-4 mr-4" placeholder="Digite seu Apelido">
+        <input type="number" id="age" class="form-control col-md-2" placeholder="Digite sua idade" min="18" max="65">
+      </div>
+      <div class="form">
+        <input type="number" id="cpf" class="form-control col-md-3 mr-4" placeholder="Digite seu CPF">
+        <input type="number" id="rg" class="form-control col-md-3 mr-4" placeholder="Digite seu RG">
+        <input type="email" id="email" class="form-control col-md-5" placeholder="Digite seu e-mail">
+      </div>
+      <div class="form">
+        <input type="number" id="cellphone" class="form-control col-md-3 mr-4" placeholder="Digite seu Telefone">
+        <select class="form-control col-md-3" id="gender">
+          <option value=""></option>
+          <option value="male">Masculino</option>
+          <option value="feminine">Feminino</option>
+          <option value="other">Outros</option>
+        </select>
       </div>
       <div class="actions mb-5">
         <button class="btn btn-warning mr-1" onclick="clean()">
